@@ -21,25 +21,28 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"blog.yywn.xyz","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="事情的起因是女朋友最近迷恋上了手机app种水果,作为男票当然要陪她一起玩了,然后就在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记录一次美团打地鼠脚本编写过程 autojs">
-<meta property="og:url" content="http://example.com/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:title" content="记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程">
+<meta property="og:url" content="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="墨妄的个人博客">
 <meta property="og:description" content="事情的起因是女朋友最近迷恋上了手机app种水果,作为男票当然要陪她一起玩了,然后就在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/mo-wang/pic/raw/master/img/%E6%89%93%E5%9C%B0%E9%BC%A0%E5%AF%BC%E5%9B%BE.jpg">
+<meta property="og:image" content="https://gitee.com/mo-wang/pic/raw/master/img/IMG_20201106_220149.jpg">
+<meta property="og:image" content="https://gitee.com/mo-wang/pic/raw/master/img/Screenshot_2020-11-06-23-04-33-620_com.jpg">
+<meta property="og:image" content="https://gitee.com/mo-wang/pic/raw/master/img/Screenshot_2020-11-06-23-05-07-857_com.jpg">
 <meta property="article:published_time" content="2020-11-06T12:21:28.000Z">
-<meta property="article:modified_time" content="2020-11-06T13:28:29.371Z">
+<meta property="article:modified_time" content="2020-11-06T15:24:23.997Z">
 <meta property="article:author" content="墨妄">
 <meta property="article:tag" content="-脚本 -autojs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/mo-wang/pic/raw/master/img/%E6%89%93%E5%9C%B0%E9%BC%A0%E5%AF%BC%E5%9B%BE.jpg">
 
-<link rel="canonical" href="http://example.com/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/">
+<link rel="canonical" href="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -52,7 +55,7 @@
   };
 </script>
 
-  <title>记录一次美团打地鼠脚本编写过程 autojs | 墨妄的个人博客</title>
+  <title>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程 | 墨妄的个人博客</title>
   
 
 
@@ -191,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/user.jpg">
@@ -204,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          记录一次美团打地鼠脚本编写过程 autojs
+          记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程
         </h1>
 
         <div class="post-meta">
@@ -215,10 +218,24 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-11-06 20:21:28 / 修改时间：21:28:29" itemprop="dateCreated datePublished" datetime="2020-11-06T20:21:28+08:00">2020-11-06</time>
+              <time title="创建时间：2020-11-06 20:21:28 / 修改时间：23:24:23" itemprop="dateCreated datePublished" datetime="2020-11-06T20:21:28+08:00">2020-11-06</time>
             </span>
 
           
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -269,21 +286,117 @@
 </tbody></table>
 <ul>
 <li><code>region</code> {Array} 找色区域。是一个两个或四个元素的数组。(region[0], region[1])表示找色区域的左上角；region[2]*region[3]表示找色区域的宽高。如果只有region只有两个元素，则找色区域为(region[0], region[1])到屏幕右下角。如果不指定region选项，则找色区域为整张图片。</li>
-<li><code>threshold</code> {number} 找色时颜色相似度的临界值，范围为0<del>255（越小越相似，0为颜色相等，255为任何颜色都能匹配）。默认为4。threshold和浮点数相似度(0.0</del>1.0)的换算为 similarity = (255 - threshold) / 255.</li>
+<li><code>threshold</code> {number} 找色时颜色相似度的临界值，范围为0 - 255（越小越相似，0为颜色相等，255为任何颜色都能匹配）。默认为4。threshold和浮点数相似度(0.0-1.0)的换算为 similarity = (255 - threshold) / 255.</li>
 </ul>
 <p>函数aj给我们提供好了,剩下的就是开始写脚本了</p>
-<h2 id="2-编写过程"><a href="#2-编写过程" class="headerlink" title="2,编写过程"></a>2,编写过程</h2><h4 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段:"></a>第一阶段:</h4><p>​    找到了多点找色的函数,我第一个思路是在手机里截全屏,然后通过多点找色,找地鼠的特征点</p>
+<h2 id="2-编写过程"><a href="#2-编写过程" class="headerlink" title="2,编写过程"></a>2,编写过程</h2><h3 id="2-1-初期代码"><a href="#2-1-初期代码" class="headerlink" title="2.1 ,初期代码"></a>2.1 ,初期代码</h3><p>​    找到了多点找色的函数,我第一个思路是在手机里截全屏,然后通过多点找色,找地鼠的特征点</p>
 <p>然后我就开始截图,裁剪出地鼠的肚皮,然后找到了几个点,开始写代码</p>
 <p>最初写出来的代码是这个样子的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">threads.start(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    requestScreenCapture()</span><br><span class="line">&#125;); <span class="comment">//截图权限</span></span><br><span class="line">sleep(<span class="number">2000</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    findds()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findds</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> screen = captureScreen(); <span class="comment">//截图</span></span><br><span class="line">    <span class="keyword">let</span> img_ds = images.findMultiColors(screen, <span class="string">&quot;#ffdfc894&quot;</span>, [</span><br><span class="line">        [<span class="number">1</span>, -<span class="number">30</span>, <span class="string">&quot;#fff7eed1&quot;</span>],</span><br><span class="line">        [<span class="number">7</span>, -<span class="number">28</span>, <span class="string">&quot;#fff5eed2&quot;</span>],</span><br><span class="line">        [<span class="number">8</span>, -<span class="number">1</span>, <span class="string">&quot;#ffe5cd9d&quot;</span>],</span><br><span class="line">        [<span class="number">36</span>, -<span class="number">4</span>, <span class="string">&quot;#ffdabf8a&quot;</span>]</span><br><span class="line">    ], &#123;</span><br><span class="line">        threshold: [<span class="number">10</span>]</span><br><span class="line">        </span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (img_ds) &#123;</span><br><span class="line">        log(<span class="string">&#x27;找到地鼠&#x27;</span>)</span><br><span class="line">        click(img_ds.x, img_ds.y)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>编写中….</p>
+<p>带上这串代码,我自信满满的前去挑战,没想到最后还不如我手动打出来的分数高,那我就不乐意了啊,于是开始琢磨怎么优化</p>
+<h3 id="2-2-初步优化代码"><a href="#2-2-初步优化代码" class="headerlink" title="2.2 初步优化代码"></a>2.2 初步优化代码</h3><p>其实从第一段代码中就可以看到很多问题</p>
+<ul>
+<li>找图直接找的全屏,浪费很多资源在没必要的地方</li>
+<li>因为我是寻找地鼠的肚皮,所以相似度可以适当调整,加快速度</li>
+<li>点击方法可以通过press函数进一步加快速度</li>
+</ul>
+<p>找到一些问题那接下来就是开始优化代码</p>
+<p>优化方向如下:</p>
+<ul>
+<li>从全屏找图优化为区域找图(要做就做干脆点,直接找12个地洞的小区域)</li>
+<li>提高相似度</li>
+<li>使用press</li>
+</ul>
+<p>后两点都很好解决,就是改个参数和函数的事情,所以这里着重讲第一点</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/IMG_20201106_220149.jpg"></p>
+<p>通过单独一个红框的高和款我们可以得到两个参数  region: [x,y,宽,高 ]  </p>
+<p>而且这两个参数是固定的</p>
+<p>接着开始计算12个红款左上角的x,y值</p>
+<p>我们可以看出来每行所有x都是相同的,每列所有y都是相同的</p>
+<p>因此,这里我建了两个数组,分别是</p>
+<blockquote>
+<p>x=[x1,x2,x3,x4]</p>
+<p>y=[y1,y2,y3]</p>
+</blockquote>
+<p>通过两个数组,我们可以组合出所有区域的左上角坐标</p>
+<p>分别是:</p>
+<ul>
+<li>第一个区域(x1,y1)</li>
+<li>第二个区域(x2,y1)</li>
+<li>第三个区域(x3,y1)</li>
+<li>第四个区域(x1,y2)</li>
+<li>…………………..</li>
+</ul>
+<p>后面我就不一一列举了</p>
+<p>然后我们就开始构建一个函数,直接把坐标传进去</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findds</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> screen = captureScreen(); <span class="comment">//截图</span></span><br><span class="line">    <span class="keyword">let</span> img_ds = images.findMultiColors(screen, <span class="string">&quot;#ffdfc894&quot;</span>, [</span><br><span class="line">        [<span class="number">1</span>, -<span class="number">30</span>, <span class="string">&quot;#fff7eed1&quot;</span>],</span><br><span class="line">        [<span class="number">7</span>, -<span class="number">28</span>, <span class="string">&quot;#fff5eed2&quot;</span>],</span><br><span class="line">        [<span class="number">8</span>, -<span class="number">1</span>, <span class="string">&quot;#ffe5cd9d&quot;</span>],</span><br><span class="line">        [<span class="number">36</span>, -<span class="number">4</span>, <span class="string">&quot;#ffdabf8a&quot;</span>]</span><br><span class="line">    ], &#123;</span><br><span class="line">        threshold: [<span class="number">50</span>],</span><br><span class="line">        region: [x,y,这里填写宽 , 这里填写高] <span class="comment">//把坐标传进这里,分别是x,y,宽高可以定义一个常量存进去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (img_ds) &#123;</span><br><span class="line">        log(<span class="string">&#x27;找到地鼠&#x27;</span>)</span><br><span class="line">        click(img_ds.x, img_ds.y)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把坐标传进函数里,然后就实现了区域内的多点找色</p>
+<p>同时这里我把相似度直接改成了50</p>
+<p>然后开始运行一下,果然,运行起来比刚才快了很多</p>
+<h3 id="2-3-寻找新道具代码"><a href="#2-3-寻找新道具代码" class="headerlink" title="2.3 寻找新道具代码"></a>2.3 寻找新道具代码</h3><p>接下来就是找时钟道具了,我们如法炮制</p>
+<p>直接区域多点找色</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findtime</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> screen = captureScreen(); <span class="comment">//截图</span></span><br><span class="line">    <span class="keyword">let</span> img_time = images.findMultiColors(screen, <span class="string">&quot;#ffdfc894&quot;</span>, [</span><br><span class="line">        [<span class="number">1</span>, -<span class="number">2</span>, <span class="string">&quot;#ffece9fa&quot;</span>],</span><br><span class="line">        [<span class="number">5</span>, -<span class="number">5</span>, <span class="string">&quot;#ff794ed3&quot;</span>],</span><br><span class="line">        [<span class="number">6</span>, -<span class="number">6</span>, <span class="string">&quot;#ff7e48de&quot;</span>],</span><br><span class="line">        [<span class="number">30</span>, <span class="number">15</span>, <span class="string">&quot;#ff483390&quot;</span>],</span><br><span class="line">        [<span class="number">32</span>, <span class="number">12</span>, <span class="string">&quot;#ff4b309b&quot;</span>],</span><br><span class="line">        [<span class="number">39</span>, <span class="number">19</span>, <span class="string">&quot;#ffedeffc&quot;</span>],</span><br><span class="line">        [<span class="number">40</span>, <span class="number">16</span>, <span class="string">&quot;#ffeceefa&quot;</span>]</span><br><span class="line">    ], &#123;</span><br><span class="line">        threshold: [<span class="number">30</span>],</span><br><span class="line">        region: [x,y,这里填写宽 , 这里填写高] <span class="comment">//把坐标传进这里,分别是x,y,宽高可以定义一个常量存进去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (img_ds) &#123;</span><br><span class="line">        log(<span class="string">&#x27;找到时钟&#x27;</span>)</span><br><span class="line">        click(img_time.x, img_time.y)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出和找地鼠差不多,</p>
+<p>然后我们运行,但是会发现运行起来分数反而没有之前高了,其实我们很好判断,因为多了找色的步骤,所以变慢了</p>
+<p>那么我们有没有优化的办法呢,这里我的思路是在找地鼠的函数里判断是否出现地鼠,,如果没有出现地鼠,在判断是否是时钟道具,</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findds</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> screen = captureScreen(); <span class="comment">//截图</span></span><br><span class="line">    <span class="keyword">let</span> img_ds = images.findMultiColors(screen, <span class="string">&quot;#ffdfc894&quot;</span>, [</span><br><span class="line">        [<span class="number">1</span>, -<span class="number">30</span>, <span class="string">&quot;#fff7eed1&quot;</span>],</span><br><span class="line">        [<span class="number">7</span>, -<span class="number">28</span>, <span class="string">&quot;#fff5eed2&quot;</span>],</span><br><span class="line">        [<span class="number">8</span>, -<span class="number">1</span>, <span class="string">&quot;#ffe5cd9d&quot;</span>],</span><br><span class="line">        [<span class="number">36</span>, -<span class="number">4</span>, <span class="string">&quot;#ffdabf8a&quot;</span>]</span><br><span class="line">    ], &#123;</span><br><span class="line">        threshold: [<span class="number">50</span>],</span><br><span class="line">        region: [x,y,这里填写宽 , 这里填写高] <span class="comment">//把坐标传进这里,分别是x,y,宽高可以定义一个常量存进去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (img_ds) &#123;</span><br><span class="line">        log(<span class="string">&#x27;找到地鼠&#x27;</span>)</span><br><span class="line">        click(img_ds.x, img_ds.y)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">log(<span class="string">&quot;没有找到地鼠,判断是否有时钟&quot;</span>);</span><br><span class="line">findtime(img,x,y)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">findtime</span>(<span class="params">img,x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> img_time = images.findMultiColors(screen, <span class="string">&quot;#ffdfc894&quot;</span>, [</span><br><span class="line">        [<span class="number">1</span>, -<span class="number">2</span>, <span class="string">&quot;#ffece9fa&quot;</span>],</span><br><span class="line">        [<span class="number">5</span>, -<span class="number">5</span>, <span class="string">&quot;#ff794ed3&quot;</span>],</span><br><span class="line">        [<span class="number">6</span>, -<span class="number">6</span>, <span class="string">&quot;#ff7e48de&quot;</span>],</span><br><span class="line">        [<span class="number">30</span>, <span class="number">15</span>, <span class="string">&quot;#ff483390&quot;</span>],</span><br><span class="line">        [<span class="number">32</span>, <span class="number">12</span>, <span class="string">&quot;#ff4b309b&quot;</span>],</span><br><span class="line">        [<span class="number">39</span>, <span class="number">19</span>, <span class="string">&quot;#ffedeffc&quot;</span>],</span><br><span class="line">        [<span class="number">40</span>, <span class="number">16</span>, <span class="string">&quot;#ffeceefa&quot;</span>]</span><br><span class="line">    ], &#123;</span><br><span class="line">        threshold: [<span class="number">30</span>],</span><br><span class="line">        region: [x,y,这里填写宽 , 这里填写高] <span class="comment">//把坐标传进这里,分别是x,y,宽高可以定义一个常量存进去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (img_ds) &#123;</span><br><span class="line">        log(<span class="string">&#x27;找到时钟&#x27;</span>)</span><br><span class="line">        click(img_time.x, img_time.y)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就把两个函数组合起来了,同时减少了一次截图的步骤更加缩短反应时间</p>
+<p>最后在加个循环直接调用函数就可以运行了</p>
+<h3 id="2-4-后续优化"><a href="#2-4-后续优化" class="headerlink" title="2.4 后续优化"></a>2.4 后续优化</h3><p>至此这个小脚本已经写得差不多了,后续就是一些小优化,比如减少反应时间,优化截图的调用之类的,这些就不在这里说了,毕竟大体框架已经搞定,后续添加以及优化并不难</p>
+<p>这里我直接写了个ui界面</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/Screenshot_2020-11-06-23-04-33-620_com.jpg"></p>
+<p>点击开始运行之后将会在左上角弹出悬浮窗</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/Screenshot_2020-11-06-23-05-07-857_com.jpg"></p>
+<p>之后就可以运行了</p>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3,总结"></a>3,总结</h2><p>这个脚本其实并不复杂,主要是多点找色函数的使用,通过这次脚本编写,让自己学习到了多点找色的使用方法,以及编写过程是自己对多点找色脚本的优化有了一些理解</p>
 
     </div>
 
     
     
     
+
+<div>
+    
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程</a></p>
+  <p><span>文章作者:</span></a></p>
+  <p><span>发布时间:</span>2020年11月06日 - 20:21:28</p>
+  <p><span>最后更新:</span>2020年11月06日 - 23:24:23</p>
+  <p><span>原始链接:</span><a href="/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/" title="记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程">http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+    
+</div>
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -312,6 +425,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -360,7 +474,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">1,设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">2,编写过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5"><span class="nav-number">2.0.1.</span> <span class="nav-text">第一阶段:</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">1,设计思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">2,编写过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%88%9D%E6%9C%9F%E4%BB%A3%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 ,初期代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%88%9D%E6%AD%A5%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 初步优化代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%AF%BB%E6%89%BE%E6%96%B0%E9%81%93%E5%85%B7%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 寻找新道具代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E5%90%8E%E7%BB%AD%E4%BC%98%E5%8C%96"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 后续优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%80%BB%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">3,总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -509,10 +623,39 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/',]
       });
       });
   </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Yr7yL9JBPcYoQaMvE0IcQF7n-gzGzoHsz',
+      appKey     : 'suQxgKXlY4L9SqkhwDqpVgzu',
+      placeholder: "来和我评论交流吧",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"haruto"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
