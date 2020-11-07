@@ -21,14 +21,14 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"blog.yywn.xyz","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"blog.meetu.top","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写)">
-<meta property="og:url" content="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/index.html">
-<meta property="og:site_name" content="墨妄的个人博客">
+<meta property="og:url" content="http://blog.meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/index.html">
+<meta property="og:site_name" content="墨妄 -meetu遇见你">
 <meta property="og:description" content="搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png">
 
-<link rel="canonical" href="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/">
+<link rel="canonical" href="http://blog.meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/">
 
 
 <script id="page-configurations">
@@ -53,7 +53,7 @@
   };
 </script>
 
-  <title>记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写) | 墨妄的个人博客</title>
+  <title>记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写) | 墨妄 -meetu遇见你</title>
   
 
 
@@ -104,10 +104,10 @@
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">墨妄的个人博客</h1>
+      <h1 class="site-title">墨妄 -meetu遇见你</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">yywn一眼万年</p>
+      <p class="site-subtitle" itemprop="description">meet you遇见你</p>
   </div>
 
   <div class="site-nav-right">
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-disk">
 
-    <a href="http://disk.yywn.xyz/index/" rel="noopener" target="_blank"><i class="fab fa-discourse fa-fw"></i>个人网盘</a>
+    <a href="http://disk.meetu.top/" rel="noopener" target="_blank"><i class="fab fa-discourse fa-fw"></i>个人网盘</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/">
+    <link itemprop="mainEntityOfPage" href="http://blog.meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/user.jpg">
@@ -202,7 +202,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="墨妄的个人博客">
+      <meta itemprop="name" content="墨妄 -meetu遇见你">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -554,7 +554,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://blog.yywn.xyz/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://blog.meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/',]
       });
       });
   </script>
