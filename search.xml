@@ -10,57 +10,6 @@
       </tags>
   </entry>
   <entry>
-    <title>记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写)</title>
-    <url>/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/</url>
-    <content><![CDATA[<p>搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章</p>
-<a id="more"></a>
-
-
-
-<h2 id="1-小白的尝试"><a href="#1-小白的尝试" class="headerlink" title="1,小白的尝试"></a>1,小白的尝试</h2><p>因为之前没有写过shell脚本,也没有尝试过在windows运行脚本,我首先进行了一个尝试,首先在Hexo的程序文件里新建了一个文件 </p>
-<p>名为     清理Hexo缓存并生成静态文件以及预览.sh </p>
-<p>然后在里面打上了这段代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<p>然后直接保存,运行之后发现确实可以使用</p>
-<p>于是我如法炮制,直接又写了几个</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#把Hexo程序文件git到仓库</span><br><span class="line">git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#从仓库拉取Hexo文件</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#推送静态文件</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>之后就变成这样</p>
-<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png"></p>
-<h2 id="2-尝试优化"><a href="#2-尝试优化" class="headerlink" title="2,尝试优化"></a>2,尝试优化</h2><p>这样弄成脚本运行起来确实舒服很多</p>
-<p>但是一堆文件堆在目录下看起来乱糟糟的,我就想到能不能把这些文件组合起来,想到shell里面应该有if函数,我就开始去搜索资料(毕竟不会shell嘛,尝试下)</p>
-<p>最后写成了这样</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;请输入数字运行脚本 &quot;</span><br><span class="line">echo &quot;--------------git主程序操作-----------------&quot;</span><br><span class="line">echo &quot;1,把Hexo主程序push到仓库&quot;</span><br><span class="line">echo &quot;2,从仓库pull Hexo主程序&quot;</span><br><span class="line">echo &quot;--------------Hexo主程序相关-----------------&quot;</span><br><span class="line">echo &quot;3,清理Hexo缓存并生成静态文件&quot;</span><br><span class="line">echo &quot;4,推送blog到静态页面&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">read  -p&quot;请输入要运行的命令&lt;输入数字&gt;&quot; input</span><br><span class="line"></span><br><span class="line">if (( $input == 1 )); then</span><br><span class="line">    git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br><span class="line">elif (( $input == 2)); then</span><br><span class="line">    git pull</span><br><span class="line">elif (( $input == 3)); then</span><br><span class="line">    hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">elif (( $input == 4 )); then</span><br><span class="line">    hexo d</span><br><span class="line">else</span><br><span class="line">    echo &quot;....&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">read  -p&quot;完成任务任意键结束&quot; </span><br></pre></td></tr></table></figure>
-
-
-
-<p>毕竟有其他语言的基础写起来确实没什么意外,上网搜索了下需要用到的函数,就写出来了</p>
-<p>这样最后成品就变成这样了,以后也可以添加创建新文章的命令进去,毕竟也就一句命令的事情</p>
-<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/1fb41547d1bb0c19.png"></p>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3,总结"></a>3,总结</h2><p>这次写的脚本可以说是非常简单非常简单,但是确确实实方便了我,作为以前没有写过shell脚本的小白,能写出来确实挺开心的,也算是学到了一些东西</p>
-<p>也希望以后能学习到shell脚本,写出实用的脚本</p>
-<blockquote>
-<p>参考网址:</p>
-<p>read命令_Linux read 命令用法详解：从键盘读取变量值:</p>
-<blockquote>
-<p><a href="https://man.linuxde.net/read">https://man.linuxde.net/read</a></p>
-</blockquote>
-<p>Shell if else语句（详解版）</p>
-<blockquote>
-<p><a href="http://c.biancheng.net/view/1262.html">http://c.biancheng.net/view/1262.html</a></p>
-</blockquote>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程</title>
     <url>/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p>事情的起因是女朋友最近迷恋上了手机app种水果,作为男票当然要陪她一起玩了,然后就在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了</p>
@@ -176,6 +125,57 @@
 ]]></content>
       <tags>
         <tag>-脚本 -autojs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写)</title>
+    <url>/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/</url>
+    <content><![CDATA[<p>搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章</p>
+<a id="more"></a>
+
+
+
+<h2 id="1-小白的尝试"><a href="#1-小白的尝试" class="headerlink" title="1,小白的尝试"></a>1,小白的尝试</h2><p>因为之前没有写过shell脚本,也没有尝试过在windows运行脚本,我首先进行了一个尝试,首先在Hexo的程序文件里新建了一个文件 </p>
+<p>名为     清理Hexo缓存并生成静态文件以及预览.sh </p>
+<p>然后在里面打上了这段代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>然后直接保存,运行之后发现确实可以使用</p>
+<p>于是我如法炮制,直接又写了几个</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#把Hexo程序文件git到仓库</span><br><span class="line">git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#从仓库拉取Hexo文件</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#推送静态文件</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>之后就变成这样</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png"></p>
+<h2 id="2-尝试优化"><a href="#2-尝试优化" class="headerlink" title="2,尝试优化"></a>2,尝试优化</h2><p>这样弄成脚本运行起来确实舒服很多</p>
+<p>但是一堆文件堆在目录下看起来乱糟糟的,我就想到能不能把这些文件组合起来,想到shell里面应该有if函数,我就开始去搜索资料(毕竟不会shell嘛,尝试下)</p>
+<p>最后写成了这样</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;请输入数字运行脚本 &quot;</span><br><span class="line">echo &quot;--------------git主程序操作-----------------&quot;</span><br><span class="line">echo &quot;1,把Hexo主程序push到仓库&quot;</span><br><span class="line">echo &quot;2,从仓库pull Hexo主程序&quot;</span><br><span class="line">echo &quot;--------------Hexo主程序相关-----------------&quot;</span><br><span class="line">echo &quot;3,清理Hexo缓存并生成静态文件&quot;</span><br><span class="line">echo &quot;4,推送blog到静态页面&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">read  -p&quot;请输入要运行的命令&lt;输入数字&gt;&quot; input</span><br><span class="line"></span><br><span class="line">if (( $input == 1 )); then</span><br><span class="line">    git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br><span class="line">elif (( $input == 2)); then</span><br><span class="line">    git pull</span><br><span class="line">elif (( $input == 3)); then</span><br><span class="line">    hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">elif (( $input == 4 )); then</span><br><span class="line">    hexo d</span><br><span class="line">else</span><br><span class="line">    echo &quot;....&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">read  -p&quot;完成任务任意键结束&quot; </span><br></pre></td></tr></table></figure>
+
+
+
+<p>毕竟有其他语言的基础写起来确实没什么意外,上网搜索了下需要用到的函数,就写出来了</p>
+<p>这样最后成品就变成这样了,以后也可以添加创建新文章的命令进去,毕竟也就一句命令的事情</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/1fb41547d1bb0c19.png"></p>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3,总结"></a>3,总结</h2><p>这次写的脚本可以说是非常简单非常简单,但是确确实实方便了我,作为以前没有写过shell脚本的小白,能写出来确实挺开心的,也算是学到了一些东西</p>
+<p>也希望以后能学习到shell脚本,写出实用的脚本</p>
+<blockquote>
+<p>参考网址:</p>
+<p>read命令_Linux read 命令用法详解：从键盘读取变量值:</p>
+<blockquote>
+<p><a href="https://man.linuxde.net/read">https://man.linuxde.net/read</a></p>
+</blockquote>
+<p>Shell if else语句（详解版）</p>
+<blockquote>
+<p><a href="http://c.biancheng.net/view/1262.html">http://c.biancheng.net/view/1262.html</a></p>
+</blockquote>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>编程</tag>
       </tags>
   </entry>
 </search>
