@@ -27,7 +27,7 @@
   <meta name="description" content="搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写)">
-<meta property="og:url" content="http://meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/index.html">
+<meta property="og:url" content="http://meetu.top/2020/11/06/20201106-shell-hexo/index.html">
 <meta property="og:site_name" content="墨妄 -meetu遇见你">
 <meta property="og:description" content="搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章">
 <meta property="og:locale" content="zh_CN">
@@ -40,7 +40,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png">
 
-<link rel="canonical" href="http://meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/">
+<link rel="canonical" href="http://meetu.top/2020/11/06/20201106-shell-hexo/">
 
 
 <script id="page-configurations">
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/">
+    <link itemprop="mainEntityOfPage" href="http://meetu.top/2020/11/06/20201106-shell-hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/user.jpg">
@@ -236,8 +236,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/11/06/20201106-shell-hexo/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/11/06/20201106-shell-hexo/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -323,7 +323,7 @@
       <i class="fa fa-chevron-left"></i> Blog说明
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/11/06/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%BE%8E%E5%9B%A2%E6%89%93%E5%9C%B0%E9%BC%A0%E8%84%9A%E6%9C%AC%E7%BC%96%E5%86%99%E8%BF%87%E7%A8%8B/" rel="next" title="记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程">
+    <a href="/2020/11/06/20201106meituan-autojs/" rel="next" title="记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程">
       记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -554,7 +554,7 @@
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'http://meetu.top/2020/11/06/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8shell%E8%84%9A%E6%9C%AC%E4%BE%BF%E6%8D%B7%E7%AE%A1%E7%90%86Hexo-%E6%9C%AA%E6%8E%A5%E8%A7%A6shell%E8%84%9A%E6%9C%AC%E7%9A%84%E7%BC%96%E5%86%99/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://meetu.top/2020/11/06/20201106-shell-hexo/',]
       });
       });
   </script>
