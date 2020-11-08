@@ -54,7 +54,7 @@
   <entry>
     <title>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程</title>
     <url>/2020/11/06/20201106meituan-autojs/</url>
-    <content><![CDATA[<p>事情的起因是女朋友最近迷恋上了手机app种水果,作为男票当然要陪她一起玩了,然后就在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了</p>
+    <content><![CDATA[<p>事情的起因是在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了</p>
 <a id="more"></a>
 
 <h2 id="1-设计思路"><a href="#1-设计思路" class="headerlink" title="1,设计思路"></a>1,设计思路</h2><p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/%E6%89%93%E5%9C%B0%E9%BC%A0%E5%AF%BC%E5%9B%BE.jpg"></p>
