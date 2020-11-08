@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meetu.top/2020/11/08/20201108-etree-python-.html/</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://meetu.top/about/index.html</loc>
     
     <lastmod>2020-11-08</lastmod>
@@ -67,14 +74,21 @@
   </url>
   
   <url>
-    <loc>http://meetu.top/tags/%E5%BF%83%E6%83%85/</loc>
+    <loc>http://meetu.top/tags/autojs/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://meetu.top/tags/autojs/</loc>
+    <loc>http://meetu.top/tags/python/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://meetu.top/tags/%E5%BF%83%E6%83%85/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -90,14 +104,21 @@
   </url>
   
   <url>
-    <loc>http://meetu.top/categories/%E5%BF%83%E6%83%85/</loc>
+    <loc>http://meetu.top/categories/autojs/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://meetu.top/categories/autojs/</loc>
+    <loc>http://meetu.top/categories/python/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://meetu.top/categories/%E5%BF%83%E6%83%85/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -55,18 +55,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Blog说明</title>
-    <url>/2020/11/05/hello%20world/</url>
-    <content><![CDATA[<p>一直想要有一个自己写东西的地方,自己也不是什么高手,想要边学习边分享,于是就有了这个Blog,就在这里面写一下自己学到的东西,以及想到的东西吧</p>
-]]></content>
-      <categories>
-        <category>心情</category>
-      </categories>
-      <tags>
-        <tag>心情</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程</title>
     <url>/2020/11/06/20201106meituan-autojs/</url>
     <content><![CDATA[<p>事情的起因是在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了</p>
@@ -185,6 +173,165 @@
       </categories>
       <tags>
         <tag>autojs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>20201108-etree-python.html</title>
+    <url>/2020/11/08/20201108-etree-python-.html/</url>
+    <content><![CDATA[<h1 id="看到了以前学lxml-etree类的笔记-今天贴上去当做加强记忆吧"><a href="#看到了以前学lxml-etree类的笔记-今天贴上去当做加强记忆吧" class="headerlink" title="看到了以前学lxml etree类的笔记,今天贴上去当做加强记忆吧"></a>看到了以前学lxml etree类的笔记,今天贴上去当做加强记忆吧</h1><p>好久也没写py了,有点手生了,贴下来加深记忆,也不是很复杂的东西,就是自己以前结合资料做的笔记</p>
+<a id="more"></a>
+
+
+
+<h2 id="读写操作"><a href="#读写操作" class="headerlink" title="读写操作"></a>读写操作</h2><ul>
+<li><p>etree.fromstring( string )</p>
+<blockquote>
+<p> 将 string 解析为 Element 或者 ElementTree 。</p>
+</blockquote>
+</li>
+<li><p>etree.parse( file )</p>
+<blockquote>
+<p>将文件或者是 file_like 对象解析为 ElementTree</p>
+<p>因为 parse() 一般解析整篇文档，字符串解析函数一般只解析片段。其中 file 还可以是 HTTP/FTP URL </p>
+</blockquote>
+</li>
+<li><p>XML( text ) / HTML( text )</p>
+<blockquote>
+<p>比较直接的对 XML 和 HTML 文档进行特定解析，可以修改解析器 parser 参数,其中 parser 可以由相应的 XMLParser() / HTMLParser() 函数生成</p>
+</blockquote>
+</li>
+<li><p>etree.tostring( elt )</p>
+<blockquote>
+<p>将一个 Element 或者 ElementTree 转换为 string 形式</p>
+<p>可选参数：pretty_print=False 表示是否格式化提高可读性；</p>
+<p>method=”xml” 选择输出后的文档格式</p>
+<blockquote>
+<p>可选参数有 xml 、html 、text </p>
+</blockquote>
+<p>encoding=None 表示以什么编码的字符串输出，在无 xml 文档声明情况下默认是 ASCⅡ </p>
+</blockquote>
+</li>
+<li><p>ElementTree.write( file )</p>
+<blockquote>
+<p>是 ElementTree 特有的方法，是将 ElementTree 写到 a file, a file-like object, or a URL (via FTP PUT or HTTP POST) 。可选参数和 tostring() 差不多</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Element-的属性"><a href="#Element-的属性" class="headerlink" title="Element 的属性"></a>Element 的属性</h2><ul>
+<li>.tag</li>
+</ul>
+<p>元素的名称</p>
+<ul>
+<li>.attrib</li>
+</ul>
+<p>一个包含元素属性的字典，key 是属性名，value 是对应的值。</p>
+<ul>
+<li>.text</li>
+</ul>
+<p>Element 的文本均为直接子文本，不包含子元素中的文本，这其中又包含两部分 .text 和 .tail 。.text 是第一个子元素标签之前的，如果没有则为 None 。</p>
+<ul>
+<li>.tail</li>
+</ul>
+<p>.tail 为 Element 的关闭标签之后的文本，并且是在下一个兄弟子标签之前的部分。没有则为 None 。</p>
+<h2 id="Element-的方法"><a href="#Element-的方法" class="headerlink" title="Element 的方法"></a>Element 的方法</h2><ul>
+<li>append( child )</li>
+</ul>
+<p>添加一个新的子节点(可以是 Element 、Comment)到当前 Element 中。</p>
+<ul>
+<li>clear()</li>
+</ul>
+<p>调用该函数，将移除所有内容 .attrib 将被移除 .text 和 .tail 将被设置为 None 所有的子节点将被删除。</p>
+<ul>
+<li>remove( child )</li>
+</ul>
+<p>将子节点 child 从Element 中移除 ，如果child 不是 Element 的子节点，将会引发 ValueError 异常。</p>
+<ul>
+<li>find( path )</li>
+</ul>
+<p>从 Element 的子元素及后代元素中查找第一个符合 path 的 subelement 。如果没有返回 None 。</p>
+<p>ElementPath 是 ElementTree 自带的一个 XPath-like 的路径语言，和 XPath 差不太多，主要区别是 ElementPath 能用 {namespace}tag，但是 ElementPath 不能使用值比较和函数。</p>
+<ul>
+<li>findall( path )</li>
+</ul>
+<p>返回一个匹配的 Element 的列表。</p>
+<ul>
+<li>findtext( path, default=None )</li>
+</ul>
+<p>返回第一个匹配元素的 .text 内容，如果存在匹配，但是没有 .text 内容，那么将返回一个空字符串，如果没有一个匹配的元素，那么将会返回一个 None ，但是有 default 参数，返回 default 所指定的。</p>
+<ul>
+<li>get( key, default=None )</li>
+</ul>
+<p>返回字符串形式的 属性 key 的值，没有返回 None 或者 default 指定的。</p>
+<ul>
+<li>getchildren()</li>
+</ul>
+<p>返回一个包含 Element 子元素的列表。</p>
+<ul>
+<li>getiterator( tag=None, *tags )</li>
+</ul>
+<p>返回元素的一个生成器，返回元素类别取决于参数 tag ，生成顺序是in document order (depth first pre-order) 深度优先的先根遍历。如果没有参数的话，则第一个就是元素本身。如果想使用一个高效的生成器，可以使用 .iter() 。</p>
+<ul>
+<li>getroottree()</li>
+</ul>
+<p>返回该元素的 ElementTree 。</p>
+<ul>
+<li>iter( tag=None, *tags )</li>
+</ul>
+<p>过滤特定标签，生成迭代器。默认情况下，iter() 迭代所有的节点，包括PI(处理指令) 、Comment(注释) 等，如果只想迭代标签元素，可以使用 Element factory 做参数e.iter(tag = etree.Element)。</p>
+<ul>
+<li>iterfind( path )</li>
+</ul>
+<p>迭代所有匹配 ElementPath 的 Element 。</p>
+<ul>
+<li>itertext( tag=None, *tags, with_tail=True )</li>
+</ul>
+<p>迭代 Element 元素的文本内容，with_tail 参数决定是否迭代子元素的 tail 。Element 的tail 不会进行迭代。</p>
+<ul>
+<li>iterancestors( tag=None )</li>
+</ul>
+<p>如果忽略参数，那么将会迭代所有先辈，加标签名可以只迭代该标签先辈。</p>
+<ul>
+<li>iterchildren( reversed=False, tag=None )</li>
+</ul>
+<p>通过设置 reversed=True 可以以反向的顺序迭代子元素。</p>
+<ul>
+<li>itersiblings( preceding=False )</li>
+</ul>
+<p>迭代 Element 之后的兄弟元素，可以通过设置 preceding=True 仅迭代 Element 之前的兄弟元素。</p>
+<ul>
+<li>iterdescendants( tag=None )</li>
+</ul>
+<p>同 iterancestors()</p>
+<ul>
+<li>items()</li>
+</ul>
+<p>返回由元素属性的键值所构成的( name, value)元组的列表。</p>
+<ul>
+<li>keys()</li>
+</ul>
+<p>返回一个没有特定顺序的元素属性名的列表。</p>
+<ul>
+<li>set(A, V)</li>
+</ul>
+<p>创建或者改变属性 A 的值为 V。</p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Blog说明</title>
+    <url>/2020/11/05/hello%20world/</url>
+    <content><![CDATA[<p>一直想要有一个自己写东西的地方,自己也不是什么高手,想要边学习边分享,于是就有了这个Blog,就在这里面写一下自己学到的东西,以及想到的东西吧</p>
+]]></content>
+      <categories>
+        <category>心情</category>
+      </categories>
+      <tags>
+        <tag>心情</tag>
       </tags>
   </entry>
 </search>
