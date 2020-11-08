@@ -55,6 +55,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Blog说明</title>
+    <url>/2020/11/05/hello%20world/</url>
+    <content><![CDATA[<p>一直想要有一个自己写东西的地方,自己也不是什么高手,想要边学习边分享,于是就有了这个Blog,就在这里面写一下自己学到的东西,以及想到的东西吧</p>
+]]></content>
+      <categories>
+        <category>心情</category>
+      </categories>
+      <tags>
+        <tag>心情</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程</title>
     <url>/2020/11/06/20201106meituan-autojs/</url>
     <content><![CDATA[<p>事情的起因是在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了</p>
@@ -173,18 +185,6 @@
       </categories>
       <tags>
         <tag>autojs</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Blog说明</title>
-    <url>/2020/11/05/hello%20world/</url>
-    <content><![CDATA[<p>一直想要有一个自己写东西的地方,自己也不是什么高手,想要边学习边分享,于是就有了这个Blog,就在这里面写一下自己学到的东西,以及想到的东西吧</p>
-]]></content>
-      <categories>
-        <category>心情</category>
-      </categories>
-      <tags>
-        <tag>心情</tag>
       </tags>
   </entry>
 </search>
