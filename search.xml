@@ -47,8 +47,11 @@
 </blockquote>
 </blockquote>
 ]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
       <tags>
-        <tag>编程</tag>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -165,15 +168,21 @@
 <p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/Screenshot_2020-11-07-01-08-48-731_com.jpg"></p>
 <p>其实还有能优化的地方,但是目前对我来说已经够用了,就这样吧</p>
 ]]></content>
+      <categories>
+        <category>autojs</category>
+      </categories>
       <tags>
-        <tag>-脚本 -autojs</tag>
+        <tag>autojs</tag>
       </tags>
   </entry>
   <entry>
     <title>Blog说明</title>
     <url>/2020/11/05/hello%20world/</url>
-    <content><![CDATA[<p>一直想要有一个自己写东西的地方,当然也有很多这样的平台,但是自己也不是什么高手,想要边学习边分享,于是就有了这个Blog,就在这里面写一下自己学到的东西,以及想到的东西吧</p>
+    <content><![CDATA[<p>一直想要有一个自己写东西的地方,自己也不是什么高手,想要边学习边分享,于是就有了这个Blog,就在这里面写一下自己学到的东西,以及想到的东西吧</p>
 ]]></content>
+      <categories>
+        <category>心情</category>
+      </categories>
       <tags>
         <tag>心情</tag>
       </tags>

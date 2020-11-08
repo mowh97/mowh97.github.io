@@ -2,7 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://meetu.top/2020/11/05/hello%20world/</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://meetu.top/2020/11/06/20201106meituan-autojs/</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meetu.top/2020/11/06/20201106-shell-hexo/</loc>
+    
+    <lastmod>2020-11-08</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://meetu.top/categories/index.html</loc>
     
     <lastmod>2020-11-08</lastmod>
     
@@ -22,20 +43,6 @@
     
   </url>
   
-  <url>
-    <loc>http://meetu.top/2020/11/06/20201106-shell-hexo/</loc>
-    
-    <lastmod>2020-11-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://meetu.top/2020/11/05/hello%20world/</loc>
-    
-    <lastmod>2020-11-06</lastmod>
-    
-  </url>
-  
 
   <url>
     <loc>http://meetu.top/</loc>
@@ -46,14 +53,14 @@
 
   
   <url>
-    <loc>http://meetu.top/tags/%E7%BC%96%E7%A8%8B/</loc>
+    <loc>http://meetu.top/tags/shell/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://meetu.top/tags/%E8%84%9A%E6%9C%AC-autojs/</loc>
+    <loc>http://meetu.top/tags/autojs/</loc>
     <lastmod>2020-11-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -67,5 +74,26 @@
   </url>
   
 
+  
+  <url>
+    <loc>http://meetu.top/categories/shell/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://meetu.top/categories/autojs/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://meetu.top/categories/%E5%BF%83%E6%83%85/</loc>
+    <lastmod>2020-11-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
 </urlset>
