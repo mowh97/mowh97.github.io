@@ -1,60 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写)</title>
-    <url>/2020/11/06/20201106-shell-hexo/</url>
-    <content><![CDATA[<p>搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章</p>
-<a id="more"></a>
-
-
-
-<h2 id="1-小白的尝试"><a href="#1-小白的尝试" class="headerlink" title="1,小白的尝试"></a>1,小白的尝试</h2><p>因为之前没有写过shell脚本,也没有尝试过在windows运行脚本,我首先进行了一个尝试,首先在Hexo的程序文件里新建了一个文件 </p>
-<p>名为     清理Hexo缓存并生成静态文件以及预览.sh </p>
-<p>然后在里面打上了这段代码</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
-<p>然后直接保存,运行之后发现确实可以使用</p>
-<p>于是我如法炮制,直接又写了几个</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#把Hexo程序文件git到仓库</span><br><span class="line">git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#从仓库拉取Hexo文件</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#推送静态文件</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>之后就变成这样</p>
-<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png"></p>
-<h2 id="2-尝试优化"><a href="#2-尝试优化" class="headerlink" title="2,尝试优化"></a>2,尝试优化</h2><p>这样弄成脚本运行起来确实舒服很多</p>
-<p>但是一堆文件堆在目录下看起来乱糟糟的,我就想到能不能把这些文件组合起来,想到shell里面应该有if函数,我就开始去搜索资料(毕竟不会shell嘛,尝试下)</p>
-<p>最后写成了这样</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;请输入数字运行脚本 &quot;</span><br><span class="line">echo &quot;--------------git主程序操作-----------------&quot;</span><br><span class="line">echo &quot;1,把Hexo主程序push到仓库&quot;</span><br><span class="line">echo &quot;2,从仓库pull Hexo主程序&quot;</span><br><span class="line">echo &quot;--------------Hexo主程序相关-----------------&quot;</span><br><span class="line">echo &quot;3,清理Hexo缓存并生成静态文件&quot;</span><br><span class="line">echo &quot;4,推送blog到静态页面&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">read  -p&quot;请输入要运行的命令&lt;输入数字&gt;&quot; input</span><br><span class="line"></span><br><span class="line">if (( $input == 1 )); then</span><br><span class="line">    git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br><span class="line">elif (( $input == 2)); then</span><br><span class="line">    git pull</span><br><span class="line">elif (( $input == 3)); then</span><br><span class="line">    hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">elif (( $input == 4 )); then</span><br><span class="line">    hexo d</span><br><span class="line">else</span><br><span class="line">    echo &quot;....&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">read  -p&quot;完成任务任意键结束&quot; </span><br></pre></td></tr></table></figure>
-
-
-
-<p>毕竟有其他语言的基础写起来确实没什么意外,上网搜索了下需要用到的函数,就写出来了</p>
-<p>这样最后成品就变成这样了,以后也可以添加创建新文章的命令进去,毕竟也就一句命令的事情</p>
-<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/1fb41547d1bb0c19.png"></p>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3,总结"></a>3,总结</h2><p>这次写的脚本可以说是非常简单非常简单,但是确确实实方便了我,作为以前没有写过shell脚本的小白,能写出来确实挺开心的,也算是学到了一些东西</p>
-<p>也希望以后能学习到shell脚本,写出实用的脚本</p>
-<blockquote>
-<p>参考网址:</p>
-<p>read命令_Linux read 命令用法详解：从键盘读取变量值:</p>
-<blockquote>
-<p><a href="https://man.linuxde.net/read">https://man.linuxde.net/read</a></p>
-</blockquote>
-<p>Shell if else语句（详解版）</p>
-<blockquote>
-<p><a href="http://c.biancheng.net/view/1262.html">http://c.biancheng.net/view/1262.html</a></p>
-</blockquote>
-</blockquote>
-]]></content>
-      <categories>
-        <category>shell</category>
-      </categories>
-      <tags>
-        <tag>shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录一次美团打地鼠脚本编写过程 autojs多点找色学习过程</title>
     <url>/2020/11/06/20201106meituan-autojs/</url>
     <content><![CDATA[<p>事情的起因是在美团里面看到了这样一个游戏 一起打地鼠 我去试玩了一下,果然,手残的我只有一百多分.这怎么能忍,开始尝试写脚本,同时就当做学习autojs里面的找色找图函数了</p>
@@ -173,6 +119,60 @@
       </categories>
       <tags>
         <tag>autojs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记一次使用shell脚本便捷管理Hexo (未接触shell脚本的编写)</title>
+    <url>/2020/11/06/20201106-shell-hexo/</url>
+    <content><![CDATA[<p>搭建了Hexo之后,为了在多设备使用,我把Hexo的主文件也给Git push到了自己的github的一个私人仓库里,这样就有了几个问题,首先每次换设备要反复Git push pull,(小白只会些操作),同时hexo的管理也要多次打开终端,在终端中重复输入命令,那我就想有没有更简单的方法来实现呢,这时候我就想到了一个东西,既然是终端,那应该可以直接写shell脚本吧,于是便有了今天这个文章</p>
+<a id="more"></a>
+
+
+
+<h2 id="1-小白的尝试"><a href="#1-小白的尝试" class="headerlink" title="1,小白的尝试"></a>1,小白的尝试</h2><p>因为之前没有写过shell脚本,也没有尝试过在windows运行脚本,我首先进行了一个尝试,首先在Hexo的程序文件里新建了一个文件 </p>
+<p>名为     清理Hexo缓存并生成静态文件以及预览.sh </p>
+<p>然后在里面打上了这段代码</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>然后直接保存,运行之后发现确实可以使用</p>
+<p>于是我如法炮制,直接又写了几个</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#把Hexo程序文件git到仓库</span><br><span class="line">git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#从仓库拉取Hexo文件</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#推送静态文件</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>之后就变成这样</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/shell%E8%84%9A%E6%9C%AChexo.png"></p>
+<h2 id="2-尝试优化"><a href="#2-尝试优化" class="headerlink" title="2,尝试优化"></a>2,尝试优化</h2><p>这样弄成脚本运行起来确实舒服很多</p>
+<p>但是一堆文件堆在目录下看起来乱糟糟的,我就想到能不能把这些文件组合起来,想到shell里面应该有if函数,我就开始去搜索资料(毕竟不会shell嘛,尝试下)</p>
+<p>最后写成了这样</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;请输入数字运行脚本 &quot;</span><br><span class="line">echo &quot;--------------git主程序操作-----------------&quot;</span><br><span class="line">echo &quot;1,把Hexo主程序push到仓库&quot;</span><br><span class="line">echo &quot;2,从仓库pull Hexo主程序&quot;</span><br><span class="line">echo &quot;--------------Hexo主程序相关-----------------&quot;</span><br><span class="line">echo &quot;3,清理Hexo缓存并生成静态文件&quot;</span><br><span class="line">echo &quot;4,推送blog到静态页面&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">read  -p&quot;请输入要运行的命令&lt;输入数字&gt;&quot; input</span><br><span class="line"></span><br><span class="line">if (( $input == 1 )); then</span><br><span class="line">    git add . &amp;&amp; git commit -m&quot;new&quot; &amp;&amp; git push</span><br><span class="line">elif (( $input == 2)); then</span><br><span class="line">    git pull</span><br><span class="line">elif (( $input == 3)); then</span><br><span class="line">    hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br><span class="line">elif (( $input == 4 )); then</span><br><span class="line">    hexo d</span><br><span class="line">else</span><br><span class="line">    echo &quot;....&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">read  -p&quot;完成任务任意键结束&quot; </span><br></pre></td></tr></table></figure>
+
+
+
+<p>毕竟有其他语言的基础写起来确实没什么意外,上网搜索了下需要用到的函数,就写出来了</p>
+<p>这样最后成品就变成这样了,以后也可以添加创建新文章的命令进去,毕竟也就一句命令的事情</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/1fb41547d1bb0c19.png"></p>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3,总结"></a>3,总结</h2><p>这次写的脚本可以说是非常简单非常简单,但是确确实实方便了我,作为以前没有写过shell脚本的小白,能写出来确实挺开心的,也算是学到了一些东西</p>
+<p>也希望以后能学习到shell脚本,写出实用的脚本</p>
+<blockquote>
+<p>参考网址:</p>
+<p>read命令_Linux read 命令用法详解：从键盘读取变量值:</p>
+<blockquote>
+<p><a href="https://man.linuxde.net/read">https://man.linuxde.net/read</a></p>
+</blockquote>
+<p>Shell if else语句（详解版）</p>
+<blockquote>
+<p><a href="http://c.biancheng.net/view/1262.html">http://c.biancheng.net/view/1262.html</a></p>
+</blockquote>
+</blockquote>
+]]></content>
+      <categories>
+        <category>shell</category>
+      </categories>
+      <tags>
+        <tag>shell</tag>
       </tags>
   </entry>
   <entry>
@@ -320,6 +320,112 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用GitHub Action定时任务实现B站，哔哩哔哩（Bilibili）自动签到每日自动投币，银瓜子兑换硬币，领取大会员福利</title>
+    <url>/2020/11/09/20202209github-action-bilibili/</url>
+    <content><![CDATA[<p>​        今天逛github偶尔看到了这样一个仓库,利用GitHub Action定时任务实现B站，哔哩哔哩（Bilibili）自动签到每日自动投币，银瓜子兑换硬币，领取大会员福利,打开看了一下,就是利用github Action来实现的,其实我自己也写过类似通过腾讯云函数免费签到的类似任务,瞬间就感兴趣了(有轮子直接用多香)</p>
+<p>​        下面就开始过程:</p>
+<a id="more"></a>
+
+
+
+<h2 id="1-要求"><a href="#1-要求" class="headerlink" title="1,要求"></a>1,要求</h2><p>要求其实不多,而且能看这个教程的基本上都有</p>
+<ol>
+<li>浏览器:Chrome,Edge,等等等都行,只要是个浏览器(IE退出群聊)</li>
+<li>bilibili帐号,(没有的估计也不会有这个需求)</li>
+<li>github帐号</li>
+<li>手</li>
+</ol>
+<h2 id="2-部署阶段"><a href="#2-部署阶段" class="headerlink" title="2,部署阶段"></a>2,部署阶段</h2><p>​    首先我们进入BILIBILI-HELPER项目地址 </p>
+<p>​    网址我也贴下来了 <strong>仓库地址：<a href="https://github.com/JunzhouLiu/BILIBILI-HELPER">JunzhouLiu/BILIBILI-HELPER</a></strong></p>
+<p>​    可以看到仓库的README.md文件介绍的也很详细</p>
+<p>​    我就不多介绍了</p>
+<h3 id="2-1Fork仓库"><a href="#2-1Fork仓库" class="headerlink" title="2.1Fork仓库"></a>2.1Fork仓库</h3><p>​    首先把项目fork到自己仓库</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/-354da7db3740b59e.png"></p>
+<h3 id="2-2-获取哔哩哔哩cookie"><a href="#2-2-获取哔哩哔哩cookie" class="headerlink" title="2.2 获取哔哩哔哩cookie"></a>2.2 获取哔哩哔哩cookie</h3><p>​    进入哔哩哔哩官网(<a href="https://www.bilibili.com/),%E7%99%BB%E5%BD%95%E8%87%AA%E5%B7%B1%E7%9A%84%E5%B8%90%E5%8F%B7">https://www.bilibili.com/),登录自己的帐号</a></p>
+<p>​    登陆之后开始获取cookie</p>
+<p>​    直接点击F12按钮或者点击菜单-更多工具-开发者工具进入开发者工具</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/7deb153f506efce0.jpg"></p>
+<p>进入开发者工具后</p>
+<p>点击APPlication-cookies-按照我的图片步骤操作</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/-1af4a5933992ad77.png"></p>
+<p>获取到cookies之后我们开始下一步</p>
+<h3 id="2-3-填入cookies"><a href="#2-3-填入cookies" class="headerlink" title="2.3 填入cookies"></a>2.3 填入cookies</h3><p>回到github 进入我们刚才fork的项目,填入cookies进入环境变量里</p>
+<p>下面是开发者的图</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/-4f7007caf79b2730.png"></p>
+<h3 id="2-4-开启-Actions"><a href="#2-4-开启-Actions" class="headerlink" title="2.4 开启 Actions"></a>2.4 <strong>开启 Actions</strong></h3><p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/-64177c7d9ebb2d34.png"></p>
+<p>然后</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/-56c3faab5db74942.png"></p>
+<h3 id="2-5-启动"><a href="#2-5-启动" class="headerlink" title="2.5 启动"></a>2.5 启动</h3><p>注意这时候默认还是不运行的,我们需要到配置文件开启</p>
+<p>回到code</p>
+<p><strong>修改 <code>./github/trigger.json</code> 文件</strong></p>
+<p>将代码改成</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;trigger&quot;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你可以直接复制我的代码</p>
+<p>然后</p>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/-46b1e3496478857b.png"></p>
+<p>修改..</p>
+<p>这时候你就可以使用Github Action运行自己的哔哩哔哩自动签到了</p>
+<h2 id="3个性化配置"><a href="#3个性化配置" class="headerlink" title="3个性化配置"></a>3个性化配置</h2><h3 id="Server酱推送"><a href="#Server酱推送" class="headerlink" title="Server酱推送"></a>Server酱推送</h3><ol>
+<li>前往 <a href="http://sc.ftqq.com/3.version">sc.ftqq.com</a> 点击登入，创建账号（建议使用 GitHub 登录）。</li>
+<li>点击点<a href="http://sc.ftqq.com/?c=code">发送消息</a> ，生成一个 Key。将其增加到 Github Secrets 中，变量名为 <code>SERVERPUSHKEY</code></li>
+<li><a href="http://sc.ftqq.com/?c=wechat&a=bind">绑定微信账号</a> ，开启微信推送。</li>
+</ol>
+<p><img data-src="https://gitee.com/mo-wang/pic/raw/master/img/16d4b1bce0a683eb.png"></p>
+<p>如果需要修改每日任务执行的时间，请修改 <code>.github/workflows/auto_task_bilili.yml</code>，在第 12 行左右位置找到下如下配置。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">schedule:</span><br><span class="line">  - cron: &#39;30 10 * * *&#39;</span><br><span class="line">  # cron表达式，Actions时区是UTC时间，所以下午18点要往前推8个小时。</span><br><span class="line">  # 示例： 每天晚上22点30执行 &#39;30 14 * * *&#39;</span><br><span class="line">  #此段来自仓库README.md</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置自定义功能-来自仓库README-md"><a href="#配置自定义功能-来自仓库README-md" class="headerlink" title="配置自定义功能(来自仓库README.md)"></a>配置自定义功能(来自仓库README.md)</h3><p><strong>配置文件位于 <code>src/main/resources/config.json</code></strong></p>
+<p>参数示意</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>numberOfCoins</td>
+<td>[0,5]</td>
+<td>每日投币数量,默认 5</td>
+</tr>
+<tr>
+<td>selectLike</td>
+<td>[0,1]</td>
+<td>投币时是否点赞，默认 0, 0：否 1：是</td>
+</tr>
+<tr>
+<td><del>watchAndShare</del></td>
+<td><del>[0,1]</del></td>
+<td><del>观看时是否分享</del></td>
+</tr>
+<tr>
+<td>monthEndAutoCharge</td>
+<td>[false,true]</td>
+<td>年度大会员月底是否用 B币券 给自己充电，默认 <code>true</code></td>
+</tr>
+<tr>
+<td>devicePlatform</td>
+<td>[ios,android]</td>
+<td>手机端漫画签到时的平台，建议选择你设备的平台 ，默认 <code>ios</code></td>
+</tr>
+</tbody></table>
+<p><em>投币数量代码做了处理，如果本日投币不能获得经验了，则不会投币，每天只投能获得经验的硬币。假设你设置每日投币 3 个，早上 7 点你自己投了 2 个硬币，则十点半时，程序只会投 1 个）</em></p>
+<h3 id="查看运行日志"><a href="#查看运行日志" class="headerlink" title="查看运行日志"></a>查看运行日志</h3><p><em>展开 <code>Build With Maven</code> 通过 <code>DEBUG</code> 标签快速过滤日志，查看运行状态</em></p>
+<p>至此你的利用GitHub Action定时任务实现B站，哔哩哔哩（Bilibili）自动签到每日自动投币，银瓜子兑换硬币，领取大会员福利，大会员月底给自己充电等功能全部配置完成</p>
+<p>感谢大佬分享的代码</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://github.com/JunzhouLiu/BILIBILI-HELPER">BILIBILI-HELPER</a></p>
+<p><a href="https://github.com/JunzhouLiu/BILIBILI-HELPER">https://github.com/JunzhouLiu/BILIBILI-HELPER</a></p>
+]]></content>
+      <categories>
+        <category>白嫖方案</category>
+      </categories>
+      <tags>
+        <tag>羊毛</tag>
       </tags>
   </entry>
   <entry>
